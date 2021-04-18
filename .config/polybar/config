@@ -18,19 +18,19 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #282828
-background-alt = #1d2021
+background = #2c2e34
+background-alt = #363a49
 ;foreground = ${xrdb:color7:#222}
-foreground = #fbf1c7
-foreground-alt = #ebdbb2
-primary = #98971a
-secondary = #b16286
-alert = #cc241d
+foreground = #c5cdd9
+foreground-alt = #c5cdd9
+primary = #deb974
+secondary = #a0c980
+alert = #ec7279
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 25
+height = 23
 ;offset-x = 1%
 ;offset-y = 0%
 radius = 0
@@ -39,8 +39,8 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
-line-color = #f00
+line-size = 1
+line-color = ${colors.primary}
 
 border-size = 0
 border-color = #00000000
@@ -51,15 +51,14 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 1
 
-font-0 = Hack:pixelsize=11;1
-font-1 = Source Code Pro:fontformat=truetype:size=8:antialias=false;0
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
-font-3 = "Font Awesome 5 Brands:style=Regular:pixelsize=12;1"
+font-0 = "JetBrains Mono:style=Medium:pixelsize=11.2;1"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=11;1"
+font-2 = "Font Awesome 5 Brands:style=Regular:pixelsize=12;1"
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature powermenu date
+modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu battery temperature powermenu date
 
-tray-position = center
+;tray-position = center
 tray-padding = 2
 ;tray-background = #0063ff
 
@@ -136,10 +135,10 @@ index-sort = true
 strip-wsnumbers = true
 wrapping-scroll = false
 
-; Only show workspaces on the same output as the bar
+; Only sho
 ;pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
@@ -162,7 +161,7 @@ label-visible-padding = ${self.label-focused-padding}
 ;urgent = Workspace with urgency hint set
 label-urgent = %name%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
 ; Separator in between workspaces
 ; label-separator = |
@@ -191,6 +190,32 @@ bar-indicator = |
 bar-indicator-foreground = #fff
 bar-indicator-font = 2
 bar-fill = ─
+colors:
+  primary:
+    background: '0x2E3440'
+    foreground: '0xD8DEE9'
+  cursor:
+    text: '0x2E3440'
+    cursor: '0xEBCB8B'
+  normal:
+    black: '0x3B4252'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x88C0D0'
+    white: '0xE5E9F0'
+  bright:
+    black: '0x4C566A'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x8FBCBB'
+    white: '0xECEFF4'
+
 bar-fill-font = 2
 bar-fill-foreground = #9f78e1
 bar-empty = ─
@@ -205,6 +230,7 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
+label-font = 0
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.secondary}
@@ -238,17 +264,18 @@ label = %percentage:2%%
 type = internal/date
 interval = 5
 
-date = " %d-%m"
-date-alt = " %Y-%m-%d"
+date = "%d-%m"
+date-alt = "%Y-%m-%d"
 
 time = %H:%M:%S
 time-alt = %H:%M:%S
 
-;format-background = ${colors.primary}
 format-prefix-foreground = ${colors.foreground}
 ;format-underline = ${colors.primary}
 
-label = %time% |%date%|
+label = %time%|%date%|
+label-font = 0
+
 [module/pulseaudio]
 type = internal/pulseaudio
 

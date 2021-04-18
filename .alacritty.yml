@@ -1,39 +1,177 @@
 env:
-  TERM: xterm-256color
-# Colors (Gruvbox dark)
-colors:
-  # Default colors
-  primary:
-    # hard contrast: background = '0x1d2021'
-    background: '0x282828'
-    # soft contrast: background = '0x32302f'
-    foreground: '0xebdbb2'
+  TERM: alacritty
+window:
+  padding:
+    x: 1
+    y: 1
 
-  # Normal colors
-  normal:
-    black:   '0x282828'
-    red:     '0xcc241d'
-    green:   '0x98971a'
-    yellow:  '0xd79921'
-    blue:    '0x458588'
-    magenta: '0xb16286'
-    cyan:    '0x689d6a'
-    white:   '0xa89984'
-
-  # Bright colors
-  bright:
-    black:   '0x928374'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
-    magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xebdbb2'
+  dynamic_padding: false
+  title: terminal
+  class:
+    instance: Alacritty
+    general: Alacritty
+  gtk_theme_variant: None
+scrolling:
+  history: 10000
+  multiplier: 1
 font:
   normal:
-    family: Hack Nerd Font
-    style: Regular
-  size: 12
+    family: JetBrains Mono
+    style: Medium
+  size: 14
+  offset:
+    x: -1
+    y: -1
+  glyph_offset:
+    x: 0
+    y: 0
+draw_bold_text_with_bright_colors: true
+# Define
+schemes:  
 
-background_opacity: 0.8
+  ### Edge (Light variant)
+  edge_light:	  &edge_light
+    primary:
+      background: "0xfafafa"
+      foreground: "0x4b505b"
+  
+    normal:
+      black: "0x4b505b"
+      red: "0xd05858"
+      green: "0x608e32"
+      yellow: "0xbe7e05"
+      blue: "0x5079be"
+      magenta: "0xb05ccc"
+      cyan: "0x3a8b84"
+      white: "0xfafafa"
+  
+    bright:
+      black: "0x4b505b"
+      red: "0xd05858"
+      green: "0x608e32"
+      yellow: "0xbe7e05"
+      blue: "0x5079be"
+      magenta: "0xb05ccc"
+      cyan: "0x3a8b84"
+      white: "0xfafafa"
+
+  ### Edge (Dark Default variant)
+  edge_dark_def:  &edge_dark_default
+    primary:
+      background: "0x2c2e34"
+      foreground: "0xc5cdd9"
+  
+    normal:
+      black: "0x3e4249"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+  
+    bright:
+      black: "0x3e4249"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+
+  ### Edge (Dark Aura variant)
+  edge_dark_aura:  &edge_dark_aura
+    primary:
+      background: "0x2b2d37"
+      foreground: "0xc5cdd9"
+  
+    normal:
+      black: "0x363a49"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+  
+    bright:
+      black: "0x363a49"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+
+  ### Edge (Dark Neon variant)
+  edge_dark_neon:  &edge_dark_neon
+    primary:
+      background: "0x2b2d3a"
+      foreground: "0xc5cdd9"
+  
+    normal:
+      black: "0x363a4e"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+  
+    bright:
+      black: "0x363a4e"
+      red: "0xec7279"
+      green: "0xa0c980"
+      yellow: "0xdeb974"
+      blue: "0x6cb6eb"
+      magenta: "0xd38aea"
+      cyan: "0x5dbbc1"
+      white: "0xc5cdd9"
+
+### Choose one of the & tags from the schemes listed above
+colors: *edge_dark_default
+bell:
+  animation: EaseOut
+  duration: 1
+  color: '#ffffff'
+background_opacity: 0.5
+selection:
+
+  text: 
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: false
+window.dynamic_title: true
+cursor:
+  style: Block
+  blinking: on
+  unfocused_hollow: true
+live_config_reload: true
+working_directory: None
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+  hide_when_typing: true
+  url:
+    launcher:
+      program: xdg-open
+      args: []
+    modifiers: None
+mouse_bindings:
+  - { mouse: Middle, action: Copy }
+key_bindings:
+  - { key: Key0,            mods: Control,  action: ResetFontSize    }
+  - { key: Equals,          mods: Control,  action: IncreaseFontSize }
+  - { key: NumpadSubtract,  mods: Control,  action: DecreaseFontSize }
+  - { key: Minus,           mods: Control,  action: DecreaseFontSize }
+debug:
+  render_timer: false
+  persistent_logging: false
+  log_level: Warn
+  print_events: true
+
+
